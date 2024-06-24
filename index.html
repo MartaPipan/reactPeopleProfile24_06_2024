@@ -44,6 +44,8 @@
       };
 
       const App = () => {
+        const [showPersons, setShowPersons] = React.useState(true);
+        const handelToggPersons =()=> setShowPersons(!showPersons)
         return React.createElement(
           "div",
           { className: "container" },
@@ -54,11 +56,12 @@
               "button",
               {
                 className: "btn btn-primary rounded-pill px-3",
-                type: "button",
+                type: "button", onClick:handelToggPersons
               },
-              "Hide data"
+              showPersons?"Hide data":"Show data",
             )
           ),
+          showPersons ? (
           React.createElement(
             "div",
             { className: "row" },
@@ -67,21 +70,22 @@
               imgUrl:
                 "https://flowbite.com/docs/images/people/profile-picture-1.jpg",
               description: "Frontend Developer",
-            }),
+            },null),
             React.createElement(Person, {
               name: "David",
               imgUrl:
                 "https://flowbite.com/docs/images/people/profile-picture-2.jpg",
               description: "Project Manager",
-            }),
+            },null),
             React.createElement(Person, {
               name: "Maria",
               imgUrl:
                 "https://flowbite.com/docs/images/people/profile-picture-3.jpg",
               description: "Ux/ui designer",
-            })
+            },null),
           )
-        );
+        ) : null
+          );
       };
 
       const root = ReactDOM.createRoot(document.getElementById("app"));
