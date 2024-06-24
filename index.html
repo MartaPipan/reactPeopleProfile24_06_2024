@@ -14,106 +14,78 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   </head>
   <body>
-    <div class="d-flex gap-2 justify-content-center py-5">
-      <button class="btn btn-primary rounded-pill px-3" type="button">
-        Hide data
-      </button>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="card m-3" style="width: 18rem">
-          <img
-            src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Ivan</h5>
-            <p class="card-text">Frontend Developer</p>
-            <a href="#" class="btn btn-primary">Go to Profile</a>
-          </div>
-        </div>
-
-        <div class="card m-3" style="width: 18rem">
-          <img
-            src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">David</h5>
-            <p class="card-text">Project Manager</p>
-            <a href="#" class="btn btn-primary">Go to profile</a>
-          </div>
-        </div>
-
-        <div class="card m-3" style="width: 18rem">
-          <img
-            src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Maria</h5>
-            <p class="card-text">UX/UI Designer</p>
-            <a href="#" class="btn btn-primary">Go to profile</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="app"></div>
     <script>
-      function Person(props) {
-        React.createElement(
-          'div',
-          { className: 'card m-3', style: "width:18rem"},
+      const Person = (props) => {
+        return React.createElement(
+          "div",
+          { className: "card m-3", style:{width:"18rem"} },
           React.createElement(
-            'img',
-            {src: props.imgUrl, className:'card-img-top'},
+            "img",
+            { src: props.imgUrl, className: "card-img-top" },
             null
           ),
           React.createElement(
             "div",
-            {className:"card-body"},
-            React.createElement("h5",{className:"card-title"},props.name),
-            React.createElement("p",{className:"card-text"}, props.description),
-            React.createElement("a"{className: "btn btn-primary", href:"#"},"Go to profile",),
+            { className: "card-body" },
+            React.createElement("h5", { className: "card-title" }, props.name),
+            React.createElement(
+              "p",
+              { className: "card-text" },
+              props.description
+            ),
+            React.createElement(
+              "a",
+              { className: "btn btn-primary", href: "#" },
+              "Go to profile"
+            )
           )
-        )
-      }
+        );
+      };
+
       const App = () => {
-  return React.createElement(
-    "div",
-    { className: "container" },
-    React.createElement(
-      "div",
-      { className: "d-flex gap-2 justify-content-center py-5" },
-      React.createElement(
-        "button",
-        { className: "btn btn-primary rounded-pill px-3", type: "button" },
-        "Hide data",
-      ),
-    ),
-    React.createElement(
-      "div",
-      { className: "row" },
-      React.createElement(Person, {
-        name: "Ivan",
-        imgUrl: "https://flowbite.com/docs/images/people/profile-picture-1.jpg",
-        description: "Frontend Developer",
-      }),
-      React.createElement(Person, {
-        name: "David",
-        imgUrl: "https://flowbite.com/docs/images/people/profile-picture-2.jpg",
-        description: "Project Manager",
-      }),
-      React.createElement(Person, {
-        name: "Maria",
-        imgUrl: "https://flowbite.com/docs/images/people/profile-picture-3.jpg",
-        description: "Ux/ui designer",
-      }),
-    ),
-  );
-};
+        return React.createElement(
+          "div",
+          { className: "container" },
+          React.createElement(
+            "div",
+            { className: "d-flex gap-2 justify-content-center py-5" },
+            React.createElement(
+              "button",
+              {
+                className: "btn btn-primary rounded-pill px-3",
+                type: "button",
+              },
+              "Hide data"
+            )
+          ),
+          React.createElement(
+            "div",
+            { className: "row" },
+            React.createElement(Person, {
+              name: "Ivan",
+              imgUrl:
+                "https://flowbite.com/docs/images/people/profile-picture-1.jpg",
+              description: "Frontend Developer",
+            }),
+            React.createElement(Person, {
+              name: "David",
+              imgUrl:
+                "https://flowbite.com/docs/images/people/profile-picture-2.jpg",
+              description: "Project Manager",
+            }),
+            React.createElement(Person, {
+              name: "Maria",
+              imgUrl:
+                "https://flowbite.com/docs/images/people/profile-picture-3.jpg",
+              description: "Ux/ui designer",
+            })
+          )
+        );
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById("app"));
+      root.render(React.createElement(App));
     </script>
   </body>
 </html>
